@@ -1,26 +1,48 @@
 .signinContainer{
-    height: 100vh;
+    height: fit-content;
     display: flex;
+    flex-direction: row;
+    margin: 0;
     gap: 100px;
+}
+
+@media (max-width: 767px) {
+    .signinContainer {
+      flex-direction: column;
+      gap: 20px;
+    }
 }
 .col1{
     margin-left: 3rem;
 }
 
 #signinImg{
-    height: 300px;
+    height: 200px;
     margin-top: 15px;
+
 }
-.col1 form{
+.col1 form {
     padding: 20px;
     margin-left: 2.5rem;
-    border: 1px solid blue;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
-}
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .col1 form:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 255, 0.3);
+    
+  }
+  
+  .col1 form:focus-within {
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
+  }
+  
 .col1 form h2{
     color: #53bcfe;
     margin: 0 auto;
@@ -28,19 +50,32 @@
 }
 .col1 form h4{
     margin-left: 15px;
+    
 }
-.col1 form input{
+.col1 form input {
     margin-left: 15px;
     width: 70%;
     background-color: #f5f5f5;
     color: #000;
     height: 20px;
-}
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .col1 form input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  
 #signinbtn{
     background-color: #53bcfe;
     height: 30px;
     border: none;
     color: #000;
+    border-radius: 5px;
+    font-size: 20px;
 }
 .col2{
     /* padding-top: 2rem; */
@@ -54,4 +89,19 @@
 }
 .col2 p{
     font-size: 1.2rem;
+}
+.col2 p span{
+    font-size: 1.5rem;
+    color: #000;
+}
+.col2 h4{
+    font-size: 1.5rem;
+}
+.col2 button{
+    background-color: #53bcfe;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 10px;
+    margin-left: 5px;
 }

@@ -17,9 +17,13 @@ function SignIn() {
       <div className="col2">
         <h2>Welcome to TaskFlowz!</h2>
         <p>The ultimate task management solution designed to revolutionize the way you handle your tasks.
-          <br/> With TaskFlowz, Simplify and Streamline your task management with ease.
+          <br/> <span>With TaskFlowz, Simplify and Streamline your task management with ease.</span>
         </p>
-        <h4>Have No Account? <button>Sign Up</button></h4>
+        <p>With TaskFlowz, you can effortlessly manage and prioritize your tasks, collaborate with 
+          team members,<br/> and stay on top of deadlines. Say goodbye to the chaos of scattered to-do
+           lists and embrace a streamlined workflow that empowers you to achieve more. 
+           Experience the power of TaskFlowz and unlock your productivity potential today.</p>
+        <h4>Have No Account? <button>Sign Up</button> </h4>
       </div>
     </div>
   )
