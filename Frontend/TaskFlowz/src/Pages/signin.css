@@ -23,6 +23,7 @@
 }
 .col1 form {
     padding: 20px;
+    height: 70%;
     margin-left: 2.5rem;
     margin-top: 5px;
     display: flex;
@@ -85,23 +86,24 @@
 }
 .col2 h2{
     color: #53bcfe;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 .col2 p{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .col2 p span{
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #000;
 }
 .col2 h4{
     font-size: 1.5rem;
+    margin-left: 2rem;
 }
 .col2 button{
     background-color: #53bcfe;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 10px;
     margin-left: 5px;
 }
