@@ -1,0 +1,10 @@
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* .topbar{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+} */

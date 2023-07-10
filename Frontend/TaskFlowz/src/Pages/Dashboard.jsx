@@ -1,9 +1,18 @@
-
+import Profile from "../Components/Profile"
+import Topbar from "../Components/Topbar"
+import Navbar from "../components/Navbar"
+import './dashboard.css'
 function Dashboard() {
   return (
     <div>
-        <h1>Dashboard</h1>
-      
+        <div className="top">
+          <Navbar/>
+          <Topbar className="topbar"/>
+        </div>
+        <div className="bodyContent">
+        <Profile/>
+
+        </div>
     </div>
   )
 }

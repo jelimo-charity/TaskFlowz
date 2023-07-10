@@ -1,19 +1,42 @@
 import './signin.css'
 import { useNavigate } from 'react-router-dom'
 import signinImg from '../assets/signIn-img.png'
+import {useForm} from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import Navbar from '../components/Navbar'
 function SignIn() {
+  const schema = yup.object().shape({
+    Email: yup.string().email().required("Email is required"),
+    Password: yup.string().required("Password is required")
+  });
+
+  const { register, handleSubmit, formState: { errors }} = useForm({
+    resolver: yupResolver(schema),
+  
+  });
+  // command to submit the form
+  const onSubmit = (data) => {
+    console.log(data)
+    navigate('/dashboard')
+  }
   const navigate = useNavigate()
   return (
+    <div>
+      <Navbar/>
+
     <div className='signinContainer'>
       <div className="col1">
       <img id="signinImg" src={signinImg} alt="page-image" />
-      <form>
+      <form onSubmit={ handleSubmit(onSubmit)}>
         <h2>Sign In</h2>
         <h4>Enter Email:</h4>
-        <input type="email" />
+        <input type="email" { ...register("Email")}/>
+        <p>{errors.Email?.message}</p>
         <h4>Enter Password</h4>
-        <input type="password" /><br/>
-        <input id='signinbtn' type="submit" onClick={()=> navigate('/dashboard')}/>
+        <input type="password" { ...register("Password")}/><br/>
+        <p>{errors.Password?.message}</p>
+        <input id='signinbtn' type="submit" />
       </form>
       </div>
       <div className="col2">
@@ -27,6 +50,7 @@ function SignIn() {
         <h4>Have No Account? <button onClick = {() => navigate('/signup')} >Sign Up</button> </h4>
       </div>
     </div>
+  </div>
   )
 }
 
