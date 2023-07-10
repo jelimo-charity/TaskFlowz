@@ -1,4 +1,6 @@
-import Profile from "../Components/Profile"
+// import Profile from "../Components/Profile"
+// import TaskForm from "../Components/Taskform"
+import Tasks from "../Components/Tasks"
 import Topbar from "../Components/Topbar"
 import Navbar from "../components/Navbar"
 import './dashboard.css'
@@ -10,7 +12,9 @@ function Dashboard() {
           <Topbar className="topbar"/>
         </div>
         <div className="bodyContent">
-        <Profile/>
+        {/* <Profile/> */}
+        {/* <TaskForm/> */}
+        <Tasks/>
 
         </div>
     </div>

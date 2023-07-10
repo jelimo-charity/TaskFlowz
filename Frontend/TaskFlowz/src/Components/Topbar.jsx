@@ -11,7 +11,7 @@ function Topbar() {
     <h2 className='linkItem'> <FaUser/>Profile</h2>
     <h2 className="linkItem"> <MdNoteAdd/>Add New Task</h2>
     <h2 className='linkItem'> <FaTasks/> My Tasks</h2>
-    <h2 className='linkItem'> <IoNotifications/> Messages</h2>
+    <h2 className='linkItem'> <IoNotifications/> Notifications</h2>
     
  </div>
 
