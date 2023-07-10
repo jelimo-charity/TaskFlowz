@@ -1,4 +1,4 @@
-import Sidenav from "../Components/Sidenav"
+import Profile from "../Components/Profile"
 import Topbar from "../Components/Topbar"
 import Navbar from "../components/Navbar"
 import './dashboard.css'
@@ -9,7 +9,10 @@ function Dashboard() {
           <Navbar/>
           <Topbar className="topbar"/>
         </div>
-        <Sidenav/>
+        <div className="bodyContent">
+        <Profile/>
+
+        </div>
     </div>
   )
 }
