@@ -1,15 +1,35 @@
+import { useContext} from 'react';
+import { Context } from '../context/userContext/Context';
+import axios from 'axios';
+
 import './taskform.css'
+import { apiDomain } from '../utils/utils';
 function TaskForm() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform form submission or data processing here
-    console.log('Form submitted');
-  };
+  const { user } = useContext(Context);
+
+ const handleSubmit = async (data) => {
+   {
+      await axios.post(`${apiDomain}/tasks`, data, {
+        headers: {
+          Authorization: `${user.token}`,
+        },
+      }).then((response)=>{
+        // reset();
+        // console.log(user.token);
+        console.log(response);
+        response.data.message && alert(response.data.message)
+      }).catch((response)=>{
+        alert(response.data.error)
+        // console.log(error);
+      })
+  
+  }
+}
 
   return (
     <div>
       <h2>Add a Task</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           <label htmlFor="category">Category:</label>
           <select id="category">
@@ -43,7 +63,7 @@ function TaskForm() {
           <label htmlFor="endDate">End Date:</label>
           <input type="date" id="endDate" />
         </div>
-        <button type="submit">Add Task</button>
+        <button type="submit" onClick={handleSubmit}>Add Task</button>
       </form>
     </div>
   );

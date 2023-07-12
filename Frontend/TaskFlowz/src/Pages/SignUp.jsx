@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import axios from 'axios'
 
 function SignUp() {
   const schema = yup.object().shape({
@@ -18,8 +19,17 @@ function SignUp() {
   })
 
   const onSubmit = data => {
-    console.log(data)
-    navigate('/')
+    axios.post('http://localhost:3000/auth/signup', data)
+    // console.log(data)
+    .then((response)=>{
+      response.data.message && alert(response.data.message)
+      console.log(data)
+      navigate('/')
+    }).catch((response)=>{
+      // console.log(response)
+      alert(response)
+    })
+   
   }
 
 

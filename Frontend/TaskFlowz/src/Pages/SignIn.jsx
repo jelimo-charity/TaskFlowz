@@ -5,7 +5,12 @@ import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Navbar from '../components/Navbar'
+import { useContext } from 'react'
+import { Context } from '../context/userContext/Context'
+import Axios from 'axios'
 function SignIn() {
+  const { user, dispatch } = useContext(Context);
+  console.log(user);
   const schema = yup.object().shape({
     Email: yup.string().email().required("Email is required"),
     Password: yup.string().required("Password is required")
@@ -17,8 +22,21 @@ function SignIn() {
   });
   // command to submit the form
   const onSubmit = (data) => {
-    console.log(data)
-    navigate('/dashboard')
+    Axios.post('http://localhost:3000/auth/login', data)
+    .then( ({data}) => {
+      if(data.token){
+        dispatch({type: 'LOGIN_SUCCESSFUL', payload: data})
+          alert(" Login successful")
+          // console.log(data)
+        navigate('/dashboard')
+      }
+    })
+    .catch((response)=>{
+      alert(response);
+      
+      console.log(response);
+    })
+   
   }
   const navigate = useNavigate()
   return (
