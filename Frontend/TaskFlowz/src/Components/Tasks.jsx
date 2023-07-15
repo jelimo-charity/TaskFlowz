@@ -1,26 +1,57 @@
-import './tasks.css'
-import { FaCommentDots } from 'react-icons/fa';
+import  { useEffect, useState, useContext } from 'react';
+import Axios from 'axios';
+import { apiDomain } from '../utils/utils';
+import { Context } from '../context/userContext/Context';
 
 function Tasks() {
-  return (
-    <div className="taskCard">
-      <h5>Frontend</h5>
-      <h6>Create the home page</h6>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi id
-         praesentium mollitia nemo ratione earum ad repellendus animi iste
-          nesciunt velit dicta quas sit, molestiae voluptatem libero cum
-           nostrum. Omnis!</p>
-  
-      <h6>Choose Status:</h6>
-      <select>
-        <option value="notStarted">Not Started</option>
-        <option value="inProgress">In Progress</option>
-        <option value="done">Done</option>
-        <option value="reviewed">Reviewed</option>
-        <option value="overdue">Overdue</option>
-      </select>
-      <p className="taskLink">Check <span><FaCommentDots /></span></p>
+  const { user } = useContext(Context);
+  const [tasks, setTasks] = useState([]);
 
+  const getTasks = async () => {
+    try {
+      const res = await Axios.get(`${apiDomain}/tasks`, {
+        headers: {
+          Authorization: `${user.token}`,
+        },
+      });
+      setTasks(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getTasks();
+  }, []);
+
+  return (
+    <div>
+      <h2>Task List</h2>
+      {tasks.length === 0 ? (
+        <p>No tasks found.</p>
+      ) : (
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <strong>Category:</strong> {task.category}
+              <br />
+              <strong>Title:</strong> {task.title}
+              <br />
+              <strong>Description:</strong> {task.description}
+              <br />
+              <strong>Priority:</strong> {task.priority}
+              <br />
+              <strong>Start Date:</strong> {task.startDate}
+              <br />
+              <strong>End Date:</strong> {task.endDate}
+              <br />
+              <strong>Assignee:</strong> {task.assignee}
+              <br />
+              <hr />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

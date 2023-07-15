@@ -3,11 +3,10 @@ import TaskForm from "../Components/Taskform"
 // import Tasks from "../Components/Tasks"
 import Topbar from "../Components/Topbar"
 import Navbar from "../components/Navbar"
-
+import Tasks from "../Components/Tasks"
 import { useContext } from "react"
 import { Context } from "../Context/taskContext/Context"
 import './dashboard.css'
-import TaskList from "../Components/TaskList"
 function Dashboard() {
   const {ui} = useContext(Context)
   return (
@@ -23,7 +22,7 @@ function Dashboard() {
                   <h2>Profile</h2>
                   <Profile/>
                 </div>
-              ): ui === 'taskform' ? (
+              ): ui === 'addTask' ? (
                 <div className="wrapper">
                   <h2>Task Form</h2>
                   <TaskForm/>
@@ -31,7 +30,7 @@ function Dashboard() {
               ): ui === 'tasks' ? (
                 <div className="wrapper">
                   <h2>Tasks</h2>
-                  <TaskList/>
+                  <Tasks/>
                 </div>
               ): null
 
