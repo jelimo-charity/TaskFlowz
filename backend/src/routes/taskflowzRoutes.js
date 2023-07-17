@@ -2,6 +2,7 @@
 import { createUser, deleteUser, getUser, getUsers, updateUser } from '../controllers/userControllers.js'
 import { signup, login } from "../controllers/userAuth.js"
 import { createTask, deleteTask, getTask, getTasks, updateTask } from '../controllers/taskControllers.js'
+import { createFeedback, deleteFeedback, getFeedback, getFeedbacks, updateFeedback } from '../controllers/feedbackControllers.js'
 
 const taskflowzRoutes = (app) =>{
     app.route('/users')
@@ -21,6 +22,18 @@ const taskflowzRoutes = (app) =>{
      .get(getTask)
      .delete(deleteTask)
      .put(updateTask)
+
+    
+     app.route('/feedbacks/:id')
+     .get( getFeedbacks)
+     .post(createFeedback)
+
+    app.route('/feedbacks/:id')
+     .get(getFeedback)
+     .delete(deleteFeedback)
+     .put(updateFeedback)
+
+
 
 
     

@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element = { <SignIn/> } />
         <Route path='/signup' element = { <SignUp/> } />
         <Route path='/dashboard' element = { <Dashboard/> } />
-        <Route path='/taskboard' element = { <Taskboard/> } /> 
+        <Route path='/taskboard/:id' element = { <Taskboard/> } /> 
       </Routes>
       </BrowserRouter>
 

@@ -24,7 +24,7 @@ function Dashboard() {
                 </div>
               ): ui === 'addTask' ? (
                 <div className="wrapper">
-                  <h2>Task Form</h2>
+                  <h2>Add Task </h2>
                   <TaskForm/>
                 </div>
               ): ui === 'tasks' ? (

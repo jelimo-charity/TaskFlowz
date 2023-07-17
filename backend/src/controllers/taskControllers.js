@@ -31,9 +31,8 @@ export const getTask = async (req, res) => {
   try {
     let pool = await sql.connect(config.sql);
     const request = await pool.request();
-    request.input('taskId', sql.Int, req.params.id);
-    const result = await request.query('SELECT * FROM tasks WHERE id = @taskId');
-    console.log(result);
+    request.input('taskId', sql.Int, req.params.taskId);
+    const result = await request.query('SELECT t.*, f.progress, f.comment FROM tasks t left join feedback f on t.id = f.task_id')
 
     if (result.recordset.length === 0) {
       res.status(404).json({ message: 'Task not found' });
@@ -65,7 +64,7 @@ export const createTask = async (req, res) => {
     console.log(result);
 
     const taskId = result.recordset[0].taskId;
-    res.status(201).json({ taskId });
+    res.status(201).json( {message: "task created successfully"});
   } catch (error) {
     console.log('Error creating task:', error);
     res.status(500).json({ message: 'Error creating task' });

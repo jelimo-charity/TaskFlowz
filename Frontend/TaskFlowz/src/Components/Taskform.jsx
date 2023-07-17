@@ -3,6 +3,7 @@ import { Context } from '../context/userContext/Context';
 import axios from 'axios';
 import './taskform.css';
 import { apiDomain } from '../utils/utils';
+import { Navigate } from 'react-router-dom'
 
 function TaskForm() {
   const { user } = useContext(Context);
@@ -31,10 +32,8 @@ function TaskForm() {
       })
       .then((response) => {
         console.log(response);
-        if (response.data.message) {
-          alert(response.data.message);
-        }
       })
+        
       .catch((error) => {
         console.log(error);
         if (error.response && error.response.data.error) {
