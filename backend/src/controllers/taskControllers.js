@@ -32,12 +32,31 @@ export const getTask = async (req, res) => {
     let pool = await sql.connect(config.sql);
     const request = await pool.request();
     request.input('taskId', sql.Int, req.params.taskId);
-    const result = await request.query('SELECT t.*, f.progress, f.comment FROM tasks t left join feedback f on t.id = f.task_id')
+    const result = await request.query('SELECT t.*, f.progress, f.comment FROM tasks t LEFT JOIN feedback f ON t.id = f.task_id WHERE t.id = @taskId');
 
     if (result.recordset.length === 0) {
       res.status(404).json({ message: 'Task not found' });
     } else {
-      res.status(200).json(result.recordset[0]);
+      const task = result.recordset[0];
+      const comments = result.recordset.map(row => ({ progress: row.progress, comment: row.comment }));
+      const latestProgress = result.recordset[result.recordset.length - 1].progress;
+      const latestComment = result.recordset[result.recordset.length - 1].comment;
+      
+      const taskWithComments = {
+        id: task.id,
+        category: task.category,
+        title: task.title,
+        description: task.description,
+        priority: task.priority,
+        startDate: task.startDate,
+        endDate: task.endDate,
+        assignee: task.assignee,
+        progress: latestProgress,
+        comment: latestComment,
+        comments: comments
+      };
+      
+      res.status(200).json(taskWithComments);
     }
   } catch (error) {
     console.log('Error fetching task:', error);
@@ -46,6 +65,7 @@ export const getTask = async (req, res) => {
     sql.close();
   }
 };
+
 
 // Create a task
 export const createTask = async (req, res) => {

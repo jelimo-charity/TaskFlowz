@@ -49,42 +49,21 @@ function Tasks() {
                   <br />
                   <strong>Description:</strong><span> {task.description}</span> 
                   <br />
-                  <strong>Priority:</strong> <span> {task.priority}</span> 
+                  {/* <strong>Priority:</strong> <span> {task.priority}</span> 
                   <br />
                   <strong>Start Date:</strong> <span> {task.startDate}</span> 
                   <br />
                   <strong>End Date:</strong> <span> {task.endDate}</span> 
                   <br />
-                  <strong>Assignee:</strong><span> {task.assignee}</span> 
+                  <strong>Assignee:</strong><span> {task.assignee}</span>  */}
                 </div>
-                <div className="taskProgress">
-                  <form >
-                  <strong>Add Progress:</strong>
-                  <select
-                    value={task.progress}
-                    
-                  >
-                    <option value="not-started">Not Started</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="completed">Completed</option>
-                    <option value="reviewed">Reviewed</option>
-                    <option value="overdue">Overdue</option>
-                  </select>
-                  <br />
-                  <strong> Add Comment:</strong>
-                  <input
-                    type="text"
-                    value={task.comment}
-                   
-                  />
-                  <br />
+                
                   <Link to={`/taskboard/${task.id}`}>
                   <button type='submit' >
                     Inspect Task
                   </button>
                   </Link>
-                  </form>
-                </div>
+                 
               </div>
               <hr />
             </li>

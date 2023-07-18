@@ -47,6 +47,10 @@ CREATE TABLE feedback (
   FOREIGN KEY (task_id) REFERENCES tasks(id)
 );
 
+SELECT t.*, f.comment
+FROM tasks t
+LEFT JOIN feedback f ON t.id = f.task_id
+WHERE t.id = 1
 -- Assuming the "tasks" table already exists and has a task with id = 1
 INSERT INTO feedback (task_id, progress, comment)
 VALUES (1, 'In Progress', 'This task is going well.');

@@ -96,7 +96,7 @@ export const createFeedback = async (req, res) => {
 
 
     const result = await request.query(
-      `INSERT INTO feedback (task_id, progress, comment) VALUES (@id, '@progress', '@comment')`
+      `INSERT INTO feedback (task_id, progress, comment) VALUES (@id, @progress, @comment)`
     );
     console.log(result);
 
