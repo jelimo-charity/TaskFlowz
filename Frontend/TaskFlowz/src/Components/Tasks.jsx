@@ -2,17 +2,16 @@ import { useEffect, useState, useContext } from 'react';
 import Axios from 'axios';
 import { apiDomain } from '../utils/utils';
 import { Context } from '../context/userContext/Context';
-// import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './tasks.css'
+import './tasks.css';
 
 function Tasks() {
   const { id } = useParams();
-  // const navigate = useNavigate();
   const { user } = useContext(Context);
   const [tasks, setTasks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredTasks, setFilteredTasks] = useState([]);
 
   const getTasks = async () => {
     try {
@@ -27,50 +26,76 @@ function Tasks() {
     }
   };
 
+  const handleSearch = () => {
+    if (searchQuery === '') {
+      setFilteredTasks([]);
+    } else {
+      const filtered = tasks.filter(
+        (task) =>
+          task.category.toLowerCase() === searchQuery.toLowerCase() ||
+          task.priority.toLowerCase() === searchQuery.toLowerCase()
+      );
+      setFilteredTasks(filtered);
+    }
+  };
+
   useEffect(() => {
     getTasks();
   }, []);
 
-
-
-
   return (
     <div className="taskDetails">
-      {tasks.length === 0 ? (
-        <p>No tasks found.</p>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search by category(Frontend/Backend/Design) or priority(High/Low)"
+      />
+      <button onClick={handleSearch}>Search</button>
+      {filteredTasks.length === 0 ? (
+        <>
+          <p>No tasks found.</p>
+          <ul>
+            {tasks.map((task) => (
+              <li key={task.id}>
+                <div className="taskRow">
+                  <div className="taskInfo">
+                    <strong>Category:</strong> <span>{task.category}</span>
+                    <br />
+                    <strong>Title:</strong> <span>{task.title}</span>
+                    <br />
+                    <strong>Description:</strong> <span>{task.description}</span>
+                    <br />
+                  </div>
+                  <div>
+                    <Link to={`/taskboard/${task.id}`} id="taskBtn">
+                      Inspect Task
+                    </Link>
+                  </div>
+                </div>
+                <hr />
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
         <ul>
-          {tasks.map((task) => (
+          {filteredTasks.map((task) => (
             <li key={task.id}>
               <div className="taskRow">
                 <div className="taskInfo">
-                  <strong>Category:</strong> <span> {task.category}</span> 
+                  <strong>Category:</strong> <span>{task.category}</span>
                   <br />
-                  <strong>Title:</strong> <span> {task.title}</span> 
+                  <strong>Title:</strong> <span>{task.title}</span>
                   <br />
-                  <strong>Description:</strong><span> {task.description}</span> 
+                  <strong>Description:</strong> <span>{task.description}</span>
                   <br />
-                  {/* <strong>Priority:</strong> <span> {task.priority}</span> 
-                  <br />
-                  <strong>Start Date:</strong> <span> {task.startDate}</span> 
-                  <br />
-                  <strong>End Date:</strong> <span> {task.endDate}</span> 
-                  <br />
-                  <strong>Assignee:</strong><span> {task.assignee}</span>  */}
+                </div>
                 <div>
-                <Link to={`/taskboard/${task.id}`} id='taskBtn'>
-                  {/* <button type='submit' > */}
+                  <Link to={`/taskboard/${task.id}`} id="taskBtn">
                     Inspect Task
-                  {/* </button> */}
-                  
                   </Link>
                 </div>
-                           
-                
-                </div>
-       
-                 
-                  
               </div>
               <hr />
             </li>

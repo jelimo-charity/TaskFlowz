@@ -4,9 +4,6 @@
   padding: 20px;
   width: 80%;
   margin: 0 auto;
-  padding-right: 3rem;
-  padding-left: 3rem;
-
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -43,13 +40,12 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 15%;
+  /* width: 85%; */
   float: right;
   text-decoration: none;
-
 }
 
-button:hover {
+#taskBtn:hover {
   background-color: #45a6d4;
 }
 
@@ -100,4 +96,35 @@ li::before {
   .taskProgress {
     margin-right: 0;
   }
+}
+
+/* Search Feature */
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  padding: 8px;
+  width: 300px;
+  border: 1px solid #53bcfe;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 300px;
+
+}
+
+.searchButton {
+  padding: 8px 16px;
+  background-color: #53bcfe;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #45a6d4;
 }
