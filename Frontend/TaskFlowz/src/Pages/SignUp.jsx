@@ -44,21 +44,20 @@ function SignUp() {
       <div className="signupImg">
         <img id="signupImg" src={signupImg} alt="page-image" />
       </div>
-      <div className="signupForm">
+      <div id="signupForm">
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>Enter username:</h3>
+        <label>Enter username:</label>
         <input type="text" { ...register('username') } />
         <p>{errors.username?.message}</p>
-        <h3>Enter email:</h3>
+        <label>Enter email:</label>
         <input type="email" { ...register('email') } />
         <p>{errors.email?.message}</p>
-        <h3>Enter password:</h3>
+        <label>Enter password:</label>
         <input type="password" { ...register('password') } /><br/>
         <p>{errors.password?.message}</p>
         <input id="signupBtn" type="submit" />
         </form>
-  
       </div>
       
     </div>

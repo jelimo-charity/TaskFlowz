@@ -19,7 +19,6 @@ function Dashboard() {
             {
               ui === 'profile' ? (
                 <div className="wrapper">
-                  <h2>Profile</h2>
                   <Profile/>
                 </div>
               ): ui === 'addTask' ? (

@@ -30,7 +30,8 @@ function TaskForm() {
         },
       })
       .then((response) => {
-        console.log(response);
+        alert(response.data.message)
+        // console.log(response);
       })
         
       .catch((error) => {

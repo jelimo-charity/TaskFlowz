@@ -58,7 +58,7 @@ function SignIn() {
       </form>
       </div>
       <div className="col2">
-        <h2>TaskFlowz!</h2>
+        <p id='head'>TaskFlowz!</p>
         <p>The ultimate task management solution designed to revolutionize the way you handle your tasks.
           <br/> <span>Simplify and Streamline your task management with ease.</span>
         </p>
