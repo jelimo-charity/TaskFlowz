@@ -48,10 +48,10 @@ function SignIn() {
       <img id="signinImg" src={signinImg} alt="page-image" />
       <form onSubmit={ handleSubmit(onSubmit)}>
         <h2>Sign In</h2>
-        <h4>Enter Email:</h4>
+        <label htmlFor="email">Enter Email:</label>
         <input type="email" { ...register("Email")}/>
         <p>{errors.Email?.message}</p>
-        <h4>Enter Password</h4>
+        <label htmlFor="password">Enter Password:</label>
         <input type="password" { ...register("Password")}/><br/>
         <p>{errors.Password?.message}</p>
         <input id='signinbtn' type="submit" />

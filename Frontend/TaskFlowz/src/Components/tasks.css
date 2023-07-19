@@ -1,76 +1,103 @@
 .taskDetails {
-    font-family: Arial, sans-serif;
-    border-radius: 4px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  padding-right: 3rem;
+  padding-left: 3rem;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.taskRow {
+  display: flex;
+  align-items: center;
+}
+
+.taskInfo {
+  flex: 1;
+}
+
+.taskInfo span {
+  color: #333;
+}
+
+.taskProgress {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.taskProgress select,
+.taskProgress input[type="text"] {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#taskBtn {
+  padding: 4px 8px;
+  background-color: #53bcfe;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 15%;
+  float: right;
+  text-decoration: none;
+
+}
+
+button:hover {
+  background-color: #45a6d4;
+}
+
+hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #53bcfe;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+li strong {
+  color: #53bcfe;
+}
+
+li::before {
+  content: "➤";
+  margin-right: 8px;
+  color: #53bcfe;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 767px) {
+  .taskDetails {
+    padding: 10px;
   }
-  
+
   .taskRow {
-    display: flex;
-    align-items: center;
-  }
-  
-  .taskInfo {
-    flex: 1;
-  }
-  
-  .taskInfo span {
-    color: #333; /* Add color to the span elements */
-  }
-  
-  .taskProgress {
-    display: flex;
     flex-direction: column;
-    margin-right: 200px; /* Reduced gap */
+    gap: 20px;
   }
-  
-  .taskProgress select,
-  .taskProgress input[type="text"] {
-    margin-bottom: 10px;
+
+  .taskProgress {
+    margin-right: 0;
   }
-  
-  button {
-    padding: 8px 16px;
-    background-color: #53bcfe;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a6d4;
-  }
-  
-  hr {
-    margin: 10px 0;
-    border: none;
-    border-top: 2px solid #53bcfe; /* Bigger size and color */
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  }
-  
-  ul {
-    list-style: none; /* Remove default list styles */
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    margin-bottom: 20px;
-    padding: 10px 0; /* Add vertical padding */
-  }
-  
-  li:last-child {
-    margin-bottom: 0; /* Remove margin-bottom from the last list item */
-  }
-  
-  li strong {
-    color: #53bcfe; /* Cool color for strong elements */
-  }
-  
-  li::before {
-    content: "➤"; /* Add a cool bullet character before each list item */
-    margin-right: 8px;
-    color: #53bcfe;
-  }
-  
+}

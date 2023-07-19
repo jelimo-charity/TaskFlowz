@@ -2,8 +2,12 @@ form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 400px;
+  width: 70%;
   margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -19,7 +23,7 @@ label {
 }
 
 select,
-input[type="text"],
+input[type="text"],input[type="email"],
 textarea,
 input[type="date"],
 button[type="submit"] {
@@ -47,10 +51,29 @@ button[type="submit"] {
   color: #fff;
   border: none;
   border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
   font-size: 1.2rem;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
   background-color: #3296c8;
+}
+
+.card {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  form,
+  .card {
+    max-width: 100%;
+  }
 }

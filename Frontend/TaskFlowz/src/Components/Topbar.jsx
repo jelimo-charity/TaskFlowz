@@ -26,7 +26,6 @@ function Topbar() {
     <h2 className="linkItem" onClick={handleaddTask}> <MdNoteAdd/>Add New Task</h2>
     <h2 className='linkItem' onClick={handleTasks}> <FaTasks/> My Tasks</h2>
     <h2 className='linkItem'> <IoNotifications/> Notifications</h2>
-    <h2 className='linkItem'> <FaTasks/> Taskboard</h2>
  </div>
  </div>
 

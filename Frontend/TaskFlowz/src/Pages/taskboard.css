@@ -1,0 +1,106 @@
+.taskD {
+  margin-bottom: 20px;
+}
+
+.taskD table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.taskD th,
+.taskD td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  word-wrap: break-word;
+}
+
+.taskD th {
+  background-color: #f2f2f2;
+  text-align: left;
+  font-weight: bold;
+}
+
+.taskProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 20px;
+  margin-left: 2rem;
+  margin-top: 15px;
+}
+.taskProgress h3{
+  margin: 0 auto;
+  font-size: 2rem;
+  color: #53bcfe;
+}
+
+.taskProgress form {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskProgress label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.taskProgress select,
+.taskProgress input[type="text"] {
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+}
+
+.taskProgress button {
+  padding: 10px 20px;
+  background-color: #53bcfe;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.taskProgress button:hover {
+  background-color: #45a6d4;
+}
+
+.taskUpdates {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-left: 2rem;
+}
+
+.taskUpdates h4 {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.taskUpdates button {
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.taskUpdates button:hover {
+  background-color: #e63946;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 767px) {
+  .taskD th,
+  .taskD td {
+    padding: 8px;
+  }
+
+  .taskProgress,
+  .taskUpdates {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

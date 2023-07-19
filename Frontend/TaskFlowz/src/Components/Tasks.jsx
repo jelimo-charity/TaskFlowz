@@ -33,6 +33,7 @@ function Tasks() {
 
 
 
+
   return (
     <div className="taskDetails">
       {tasks.length === 0 ? (
@@ -56,14 +57,20 @@ function Tasks() {
                   <strong>End Date:</strong> <span> {task.endDate}</span> 
                   <br />
                   <strong>Assignee:</strong><span> {task.assignee}</span>  */}
-                </div>
-                
-                  <Link to={`/taskboard/${task.id}`}>
-                  <button type='submit' >
+                <div>
+                <Link to={`/taskboard/${task.id}`} id='taskBtn'>
+                  {/* <button type='submit' > */}
                     Inspect Task
-                  </button>
+                  {/* </button> */}
+                  
                   </Link>
+                </div>
+                           
+                
+                </div>
+       
                  
+                  
               </div>
               <hr />
             </li>

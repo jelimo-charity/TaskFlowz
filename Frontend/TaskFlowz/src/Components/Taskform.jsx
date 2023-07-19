@@ -3,7 +3,6 @@ import { Context } from '../context/userContext/Context';
 import axios from 'axios';
 import './taskform.css';
 import { apiDomain } from '../utils/utils';
-import { Navigate } from 'react-router-dom'
 
 function TaskForm() {
   const { user } = useContext(Context);
@@ -47,7 +46,6 @@ function TaskForm() {
 
   return (
     <div>
-      <h2>Add a Task</h2>
       <form>
         <div>
           <label htmlFor="category">Category:</label>
@@ -86,6 +84,10 @@ function TaskForm() {
           <label htmlFor="assignee">Assignee Email:</label>
           <input type="email" id="assignee" name="assignee" value={formData.assignee} onChange={handleChange} />
         </div>
+        {/* <div>
+          <label htmlFor="assignee">Assignee Email:</label><br/>
+          <input type="email" id="assignee" name="assignee" value={formData.assignee} onChange={handleChange} />
+        </div> */}
         <button type="submit" onClick={handleSubmit}>Add Task</button>
       </form>
     </div>
