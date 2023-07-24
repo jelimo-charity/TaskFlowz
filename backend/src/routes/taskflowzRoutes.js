@@ -18,7 +18,7 @@ const taskflowzRoutes = (app) =>{
      .get( getTasks)
      .post(createTask)
 
-     app.route('/tasks/:taskId')
+     app.route('/tasks/:id')
      .get(getTask)
      .delete(deleteTask)
      .put(updateTask)

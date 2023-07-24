@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiDomain } from '../utils/utils';
 import axios from 'axios';
 import { Context } from '../context/userContext/Context';
-import { useContext } from 'react';
-import './taskboard.css'
+import UpdateForm from '../Components/UpdateForm';
+import './taskboard.css';
 import Navbar from '../components/Navbar';
 
 function TaskBoard() {
@@ -14,6 +14,7 @@ function TaskBoard() {
   const [progress, setProgress] = useState('');
   const [comment, setComment] = useState('');
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
   const commentRef = useRef(null);
 
   const fetchTaskDetails = async () => {
@@ -61,7 +62,7 @@ function TaskBoard() {
       }
     }
   };
- 
+
   const handleDelete = async () => {
     try {
       const response = await axios.delete(`${apiDomain}/tasks/${id}`, {
@@ -69,7 +70,7 @@ function TaskBoard() {
           Authorization: `${user.token}`,
         },
       });
-      alert(response.data.message)
+      alert(response.data.message);
       console.log(response);
       // Handle success message or navigation to another page
     } catch (error) {
@@ -81,7 +82,22 @@ function TaskBoard() {
       }
     }
   };
-  
+
+  const handleUpdate = () => {
+    setShowEditForm(true);
+  };
+
+  const getTask = async () => {
+    // Fetch the updated task details and update the state
+    try {
+      const res = await fetch(`${apiDomain}/tasks/${id}`);
+      const data = await res.json();
+      setTask(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -132,54 +148,52 @@ function TaskBoard() {
       <div className="taskProgress">
         <h3>Give the Feedback of your Task!</h3>
         <div>
-         <form>
-          <div>
-          <strong>Add Progress:</strong>
-          <select
-            value={progress}
-            onChange={(e) => setProgress(e.target.value)}
-          >
-            <option value="not-started">Not Started</option>
-            <option value="in-progress">In Progress</option>
-            <option value="completed">Completed</option>
-            <option value="reviewed">Reviewed</option>
-            <option value="overdue">Overdue</option>
-          </select>
-          </div>
-          <div>
-          <strong>Add Comment:</strong>
-          <input
-            ref={commentRef}
-            type="text"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          </div>
-          <div>
-          <button onClick={handleFeedback}>
-            Submit Feedback
-          </button>
-          </div>
-         
-         </form>
+          <form>
+            <div>
+              <strong>Add Progress:</strong>
+              <select
+                value={progress}
+                onChange={(e) => setProgress(e.target.value)}
+              >
+                <option value="not-started">Not Started</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+                <option value="reviewed">Reviewed</option>
+                <option value="overdue">Overdue</option>
+              </select>
+            </div>
+            <div>
+              <strong>Add Comment:</strong>
+              <input
+                ref={commentRef}
+                type="text"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </div>
+            <div>
+              <button onClick={handleFeedback}>
+                Submit Feedback
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="taskUpdates">
-          <div>
-            <h4>Delete the Task</h4>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
-          <div>
-            <h4>Update the Task</h4>
-            <button onClick={handleDelete}>Update</button>
-          </div>
-          <div>
-            <h4>Close the Task</h4>
-            <button onClick={handleDelete}>Close</button>
-          </div>
-       
       </div>
+      <div className="taskUpdates">
+        <div>
+          <h4>Delete the Task</h4>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+        <div>
+          <h4>Update the Task</h4>
+          <button onClick={handleUpdate}>Update</button>
+        </div> 
+        <div>
+          <h4>Close the Page</h4>
+          <button onClick={handleDelete}>Back</button>
+        </div>
       </div>
-     
+      {showEditForm && <UpdateForm setShowEditForm={setShowEditForm} task={task} getTask={getTask} />}
     </div>
   );
 }

@@ -31,8 +31,8 @@ export const getTask = async (req, res) => {
   try {
     let pool = await sql.connect(config.sql);
     const request = await pool.request();
-    request.input('taskId', sql.Int, req.params.taskId);
-    const result = await request.query('SELECT t.*, f.progress, f.comment FROM tasks t LEFT JOIN feedback f ON t.id = f.task_id WHERE t.id = @taskId');
+    request.input('id', sql.Int, req.params.id);
+    const result = await request.query('SELECT t.*, f.progress, f.comment FROM tasks t LEFT JOIN feedback f ON t.id = f.task_id WHERE t.id = @id');
 
     if (result.recordset.length === 0) {
       res.status(404).json({ message: 'Task not found' });
@@ -93,13 +93,12 @@ export const createTask = async (req, res) => {
   }
 };
 
-// Update a task
 export const updateTask = async (req, res) => {
   try {
     let pool = await sql.connect(config.sql);
     const request = await pool.request();
     const { category, title, description, priority, startDate, endDate, assignee } = req.body;
-    request.input('taskId', sql.Int, req.params.id);
+    request.input('id', sql.Int, req.params.id);
     request.input('category', sql.VarChar(255), category);
     request.input('title', sql.VarChar(255), title);
     request.input('description', sql.Text, description);
@@ -107,7 +106,21 @@ export const updateTask = async (req, res) => {
     request.input('startDate', sql.Date, startDate);
     request.input('endDate', sql.Date, endDate);
     request.input('assignee', sql.VarChar(255), assignee);
-    await request.query('UPDATE tasks SET category = @category, title = @title, description = @description, priority = @priority, startDate = @startDate, endDate = @endDate, assignee = @assignee WHERE id = @taskId');
+
+    // Check if the task with the given id exists before updating.
+    const checkTaskQuery = 'SELECT COUNT(*) as taskCount FROM tasks WHERE id = @id';
+    const checkTaskResult = await request.query(checkTaskQuery);
+
+    if (checkTaskResult.recordset[0].taskCount === 0) {
+      // If the task does not exist, return an error response.
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    // If the task exists, proceed with the update.
+    const updateTaskQuery =
+      'UPDATE tasks SET category = @category, title = @title, description = @description, priority = @priority, startDate = @startDate, endDate = @endDate, assignee = @assignee WHERE id = @id';
+    await request.query(updateTaskQuery);
+
     res.status(200).json({ message: 'Task updated successfully' });
   } catch (error) {
     console.log('Error updating task:', error);
@@ -117,13 +130,30 @@ export const updateTask = async (req, res) => {
   }
 };
 
+
 // Delete a task
 export const deleteTask = async (req, res) => {
   try {
     let pool = await sql.connect(config.sql);
     const request = await pool.request();
-    request.input('taskId', sql.Int, req.params.id);
-    await request.query('DELETE FROM tasks WHERE id = @taskId');
+    const id = req.params.id;
+    console.log(id);
+
+    // Check if there are associated records in the "feedback" table for the task.
+    const checkFeedbackQuery = 'SELECT COUNT(*) as feedbackCount FROM dbo.feedback WHERE id = @id';
+    request.input('id', sql.Int, id);
+    const feedbackResult = await request.query(checkFeedbackQuery);
+
+    if (feedbackResult.recordset[0].feedbackCount > 0) {
+      // If there are associated records, handle the deletion of those records first.
+      const deleteFeedbackQuery = 'DELETE FROM dbo.feedback WHERE id = @id';
+      await request.query(deleteFeedbackQuery);
+    }
+
+    // After deleting associated feedback, delete the task.
+    const deleteTaskQuery = 'DELETE FROM tasks WHERE id = @id';
+    await request.query(deleteTaskQuery);
+
     res.status(200).json({ message: 'Task deleted successfully' });
   } catch (error) {
     console.log('Error deleting task:', error);
@@ -132,5 +162,6 @@ export const deleteTask = async (req, res) => {
     sql.close();
   }
 };
+
 
   
