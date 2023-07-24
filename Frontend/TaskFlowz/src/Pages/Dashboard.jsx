@@ -23,12 +23,12 @@ function Dashboard() {
                 </div>
               ): ui === 'addTask' ? (
                 <div className="wrapper">
-                  <h2>Add Task </h2>
+                  {/* <h2>Add Task </h2> */}
                   <TaskForm/>
                 </div>
               ): ui === 'tasks' ? (
                 <div className="wrapper">
-                  <h2>Tasks</h2>
+                  {/* <h2>Tasks</h2> */}
                   <Tasks/>
                 </div>
               ): null
