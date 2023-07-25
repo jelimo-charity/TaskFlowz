@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { apiDomain } from '../utils/utils';
 import axios from 'axios';
 import { Context } from '../context/userContext/Context';
@@ -16,7 +16,8 @@ function TaskBoard() {
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
   const commentRef = useRef(null);
-
+  
+  const navigate = useNavigate();
   const fetchTaskDetails = async () => {
     try {
       const res = await fetch(`${apiDomain}/tasks/${id}`);
@@ -29,6 +30,7 @@ function TaskBoard() {
 
   useEffect(() => {
     fetchTaskDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, feedbackSubmitted]);
 
   if (!task) {
@@ -97,6 +99,10 @@ function TaskBoard() {
       console.log(error);
     }
   };
+  const handleClose = async ()=>{
+    navigate('/dashboard')
+
+  }
 
   return (
     <div>
@@ -190,7 +196,7 @@ function TaskBoard() {
         </div> 
         <div>
           <h4>Close the Page</h4>
-          <button onClick={handleDelete}>Back</button>
+          <button onClick={handleClose}>Back</button>
         </div>
       </div>
       {showEditForm && <UpdateForm setShowEditForm={setShowEditForm} task={task} getTask={getTask} />}
