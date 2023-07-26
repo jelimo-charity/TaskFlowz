@@ -60,3 +60,16 @@ VALUES (2, 'In Progress', 'This task is going well.');
 
 select * from feedback
 
+CREATE TABLE Notifications (
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  UserId INT,
+  Content VARCHAR (255),
+  FOREIGN KEY (UserId) REFERENCES Users(UserID)
+);
+
+-- Inserting the first row
+INSERT INTO Notifications (UserId, Content) VALUES (1, 'New task assigned');
+
+select * from Notifications
+-- Inserting the second row 
+

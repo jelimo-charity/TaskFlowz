@@ -3,6 +3,7 @@ import { createUser, deleteUser, getUser, getUsers, updateUser } from '../contro
 import { signup, login} from "../controllers/userAuth.js"
 import { createTask, deleteTask, getTask, getTasks, updateTask } from '../controllers/taskControllers.js'
 import { createFeedback, deleteFeedback, getFeedback, getFeedbacks, updateFeedback } from '../controllers/feedbackControllers.js'
+import { createNotification, deleteNotification, getNotification } from '../controllers/notifications.js'
 
 const taskflowzRoutes = (app) =>{
     app.route('/users')
@@ -32,6 +33,13 @@ const taskflowzRoutes = (app) =>{
      .get(getFeedback)
      .delete(deleteFeedback)
      .put(updateFeedback)
+    
+     app.route('/notifications')
+     .get(getNotification)
+     .post(createNotification) 
+
+    app.route('/notifications/:UserID')
+     .delete(deleteNotification)
 
 
 
