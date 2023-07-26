@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
+import Footer from '../Components/Footer'
 
 function SignUp() {
   const schema = yup.object().shape({
@@ -47,20 +48,24 @@ function SignUp() {
       <div id="signupForm">
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Enter username:</label>
+        <label>Enter username:</label><br/>
         <input type="text" { ...register('username') } />
         <p>{errors.username?.message}</p>
-        <label>Enter email:</label>
+        <label>Enter email:</label><br/>
         <input type="email" { ...register('email') } />
         <p>{errors.email?.message}</p>
-        <label>Enter password:</label>
+        <label>Enter password:</label><br/>
         <input type="password" { ...register('password') } /><br/>
         <p>{errors.password?.message}</p>
         <input id="signupBtn" type="submit" />
         </form>
       </div>
+   
       
     </div>
+    <div className="footer">
+        <Footer/>
+      </div>
   </div>
   )
 }

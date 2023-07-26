@@ -9,7 +9,8 @@ export const createNotification = async (userData, notificationData) => {
       },
     });
     // console.log("Notification created:", response.data);
-    // alert("Notification created!");
+    // alert("Notification created!");  
+    
     return response.data;
   } catch (error) {
     console.error("Error creating notification:", error.message);

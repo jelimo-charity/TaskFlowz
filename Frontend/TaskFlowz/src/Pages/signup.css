@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
+
+
 .signupContainer {
     display: flex;
     flex-direction: row;
     gap: 30px;
+    height: 90vh;
   }
   
   @media (max-width: 767px) {
@@ -17,16 +21,16 @@
    
   #signupForm {
     padding: 10px;
-    width: 30%;
-    height: 50%;
+    width: 40%;
+    height: 60%;
     margin-left: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #fff;
     border-radius: 8px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
-    transition: box-shadow 0.3s ease; */
+    border: 1px solid #53bcfe;
+    
   }
   
   #signupForm:hover {
@@ -38,23 +42,49 @@
   #signupForm h1 {
     color: #54bcfe;
     margin: 0 auto;
+    font-family: 'Gabriela', serif;
+
   }
   
   #signupForm h3 {
     margin-left: 0.5rem;
+    font-family: 'Gabriela', serif;
+
   }
   
   #signupForm input {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
-    width: 100%;
+    width: 80%;
     background-color: #f5f5f5;
     color: #000;
     border: none;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    font-family: 'Gabriela', serif;
+
   }
+  #signupForm input[type="submit"] {
+    margin-bottom: 0.5rem;
+    /* padding: 0.7rem; */
+    width: 40%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+    padding-bottom: 5px;
+    background-color: #53bcfe;
+    color: #000;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    font-family: 'Gabriela', serif;
+    cursor: pointer; /* Add this to change the cursor to a pointer on hover */
+  }
+  
   
   #signupForm input:focus {
     outline: none;
@@ -70,8 +100,11 @@
 #signupBtn {
     background-color: #53bcfe;
     height: 30px;
+    width: 40%;
     border: none;
     color: #000;
     border-radius: 5px;
     font-size: 20px;
+    font-family: 'Gabriela', serif;
+
   }  

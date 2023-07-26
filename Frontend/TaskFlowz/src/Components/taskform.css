@@ -1,8 +1,12 @@
+ .taskform{
+  margin-top: 20px;
+ }
  form {
   display: flex;
   flex-direction: column;
   width: 70%;
   margin: 0 auto;
+  /* margin-top: 15px; */
   padding: 40px;
   background-color: #f4f4f4;
   border-radius: 8px;
@@ -118,9 +122,8 @@ select {
   width: 100%;
 }
 
-/* Set the background color of the dropdown options */
 #assignee {
-  color: #fff;
+  color: #000;
 }
 
 button[type="submit"] {

@@ -84,7 +84,7 @@ function TaskForm() {
   };
 
   return (
-    <div>
+    <div className='taskform'>
       <form>
         <div>
           <label htmlFor="category">Category:</label>
@@ -160,13 +160,10 @@ function TaskForm() {
             value={formData.assignee}
             onChange={handleChange}
           >
-            <label>Select Assignee</label>
+            <option>Select Assignee</option>
             {/* Map over the users to create dropdown options */}
             {users.map((user) => (
-              <option key={user.UserID} value={user.Email} className='optionsnames' >  
-                {user.email}
-              </option>
-
+              <option >{user.Email} </option>
             ))}
           </select>
         </div>
