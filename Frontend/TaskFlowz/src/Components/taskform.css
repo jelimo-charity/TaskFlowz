@@ -1,11 +1,10 @@
-form {
+ form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   width: 70%;
   margin: 0 auto;
   padding: 40px;
-  background-color: #fff;
+  background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -23,7 +22,8 @@ label {
 }
 
 select,
-input[type="text"],input[type="email"],
+input[type="text"],
+input[type="email"],
 textarea,
 input[type="date"],
 button[type="submit"] {
@@ -34,6 +34,7 @@ button[type="submit"] {
   border-radius: 5px;
   font-size: 1rem;
   color: #000;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -64,11 +65,91 @@ button[type="submit"]:hover {
 .card {
   max-width: 400px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
+}form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #53bcfe;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+select,
+input[type="text"],
+input[type="email"],
+textarea,
+input[type="date"],
+button[type="submit"] {
+  height: 40px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+select {
+  width: 100%;
+}
+
+/* Set the background color of the dropdown options */
+#assignee {
+  color: #fff;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #53bcfe;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3296c8;
+}
+
+.card {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.optionsnames{
+  color: #000;
 }
 
 @media (max-width: 767px) {
@@ -77,3 +158,11 @@ button[type="submit"]:hover {
     max-width: 100%;
   }
 }
+
+
+@media (max-width: 767px) {
+  form,
+  .card {
+    max-width: 100%;
+  }
+} 

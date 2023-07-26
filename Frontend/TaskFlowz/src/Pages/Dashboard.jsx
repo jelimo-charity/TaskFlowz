@@ -4,6 +4,7 @@ import TaskForm from "../Components/Taskform"
 import Topbar from "../Components/Topbar"
 import Navbar from "../components/Navbar"
 import Tasks from "../Components/Tasks"
+import Notification from '../Components/Notification'
 import { useContext } from "react"
 import { Context } from "../Context/taskContext/Context"
 import './dashboard.css'
@@ -30,6 +31,10 @@ function Dashboard() {
                 <div className="wrapper">
                   {/* <h2>Tasks</h2> */}
                   <Tasks/>
+                </div>
+              ):  ui === 'notifications' ? (
+                <div className="wrapper">
+                  <Notification/>
                 </div>
               ): null
 

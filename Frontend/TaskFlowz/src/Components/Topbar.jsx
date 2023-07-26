@@ -5,6 +5,7 @@ import { FaTasks } from 'react-icons/fa'
 import { IoNotifications } from 'react-icons/io5'
 import { Context } from '../Context/taskContext/Context'
 import { useContext } from 'react'
+// import { useNavigate } from 'react-router-dom'
 function Topbar() {
   const {dispatch} = useContext(Context);
   const handleProfile = () =>{
@@ -15,6 +16,9 @@ function Topbar() {
   }
   const handleTasks = () =>{
     dispatch({type:"TASKS", payload: "tasks"})
+  };
+  const handleNotification = () => {
+    dispatch({type:"NOTIFICATION", payload: "notifications"})
   }
   
   return (
@@ -25,7 +29,7 @@ function Topbar() {
     <h2 className='linkItem' onClick={handleProfile}> <FaUser/>Profile</h2>
     <h2 className="linkItem" onClick={handleaddTask}> <MdNoteAdd/>Add New Task</h2>
     <h2 className='linkItem' onClick={handleTasks}> <FaTasks/> My Tasks</h2>
-    <h2 className='linkItem'> <IoNotifications/> Notifications</h2>
+    <h2 className='linkItem' onClick={handleNotification}> <IoNotifications/> Notifications</h2>
  </div>
  </div>
 

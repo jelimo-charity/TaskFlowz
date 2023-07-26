@@ -12,6 +12,10 @@ const Reducer = (state, action) => {
             return {
                 ui: action.payload
             }
+        case "NOTIFICATION":
+            return {
+                ui: action.payload
+            }
         default:
             return state;
     }
