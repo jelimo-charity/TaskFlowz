@@ -44,6 +44,7 @@
     margin-left: 5rem;
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
     justify-content: center;
     background-color: #fff;
      border-radius: 8px;
@@ -99,6 +100,16 @@
       flex-direction: column;
       justify-content: center;
       
+    }
+    .signinContainer .col3{
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      /* margin-right: 1px; */
+    }
+    .signinContainer .col3 form{
+      width: 90%;
+      margin-left: 30px;
     }
   }
   .signinContainer .col2{
